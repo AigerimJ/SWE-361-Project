@@ -19,9 +19,7 @@ table#nat{
 	String pass = request.getParameter("pass");
 	String addr = request.getParameter("address");
 	String age = request.getParameter("age");
-	String qual = request.getParameter("qual");
-	String percent = request.getParameter("percent");
-	String year = request.getParameter("yop"); 
+	
 %>
 <table id ="nat">
 <tr>
@@ -36,22 +34,7 @@ table#nat{
 	<td>Address</td>
 	<td><%= addr %></td>
 </tr>
-<tr>
-	<td>Age</td>
-	<td><%= age %></td>
-</tr>
-<tr>
-	<td>Qualification</td>
-	<td><%= qual %></td>
-</tr>
-<tr>
-	<td>Percentage</td>
-	<td><%= percent %></td>
-</tr>
-<tr>
-	<td>Year of Passout</td>
-	<td><%= year %></td>
-</tr>
+
 </table>
 <br>
 use " <i> select * from student; </i> " in mysql client to verify it.

@@ -1,3 +1,5 @@
+package kz.edu.nu.cs.exercise;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -25,12 +27,9 @@ public class RegistrationController extends HttpServlet {
   String pass = request.getParameter("pass");
   String addr = request.getParameter("address");
   String age = request.getParameter("age");
-  String qual = request.getParameter("qual");
-  String percent = request.getParameter("percent");
-  String year = request.getParameter("yop");
 
   // validate given input
-  if (name.isEmpty() || addr.isEmpty() || age.isEmpty() || qual.isEmpty() || percent.isEmpty() || year.isEmpty()) {
+  if (name.isEmpty() || addr.isEmpty() || age.isEmpty() ) {
    RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
    out.println("<font color=red>Please fill all the fields</font>");
    rd.include(request, response);
@@ -44,7 +43,7 @@ public class RegistrationController extends HttpServlet {
 
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root"); 
 
-    String query = "insert into student values(?,?,?,?,?,?,?,?)";
+    String query = "insert into student values(?,?,?,?,?)";
 
     PreparedStatement ps = con.prepareStatement(query); // generates sql query
 
@@ -53,9 +52,7 @@ public class RegistrationController extends HttpServlet {
     ps.setString(3, pass);
     ps.setString(4, addr);
     ps.setInt(5, Integer.parseInt(age));
-    ps.setString(6, qual);
-    ps.setString(7, percent);
-    ps.setString(8, year);
+
 
     ps.executeUpdate(); // execute it on test database
     System.out.println("successfuly inserted");
@@ -70,3 +67,4 @@ public class RegistrationController extends HttpServlet {
   }
  }
 }
+
